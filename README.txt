@@ -1,15 +1,26 @@
-Contributor(s): Natalie Kadonaga
+# Flex-out Calculator
 
-Summary
+## Contributor(s)
 
-Users
+* Natalie Kadonaga
 
-MVP
+## Summary
 
-Functionality
+## Users
 
-Installation Steps
+## MVP
 
-Issues/Known Bugs
+## Functionality
 
-References
+## Installation Steps
+
+$bundle install
+
+$bin/rails server
+
+Navigate to http://localhost:3000.
+
+## Issues/Known Bugs
+
+## References
+http://guides.rubyonrails.org/getting_started.html
