@@ -1,1 +1,17 @@
 <h1>New Product</h1>
+
+<%= form_with scope: :product, url: products_path, local: true do |form| %>
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+ 
+  <p>
+    <%= form.label :price %><br>
+    <%= form.number_field :price , :step => 0.01%>
+  </p>
+ 
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
