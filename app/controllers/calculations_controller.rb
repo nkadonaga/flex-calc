@@ -1,4 +1,8 @@
 class CalculationsController < ApplicationController
+  def index
+    @calculations = Calculation.all
+  end
+
   def show
     @calculation = Calculation.find(params[:id])
   end
@@ -28,6 +32,13 @@ class CalculationsController < ApplicationController
     @calculation.update_attributes(attributes)
 
     redirect_to @calculation
+  end
+
+  def destroy
+    @calculation = Calculation.find(params[:id])
+    @calculation.destroy
+
+    redirect_to calculations_path
   end
 
   private

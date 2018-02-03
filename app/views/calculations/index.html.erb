@@ -1,0 +1,21 @@
+<h1>All calculations</h1>
+ 
+<%= link_to 'New calculation', new_calculation_path %>
+
+<table>
+  <tr>
+    <th>Amount</th>
+    <th>List</th>
+  </tr>
+ 
+  <% @calculations.each do |calculation| %>
+    <tr>
+      <td><%= calculation.amount %></td>
+      <td><%= calculation.list %></td>
+      <td><%= link_to 'Show', calculation_path(calculation) %></td>
+      <td><%= link_to 'Destroy', calculation_path(calculation),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
