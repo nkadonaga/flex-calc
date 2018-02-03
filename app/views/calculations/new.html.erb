@@ -1,0 +1,14 @@
+<h1>New calculation</h1>
+
+<%= form_with model: @calculation, local: true do |form| %>
+ 
+  <p>
+    <%= form.label :amount %><br>
+    <%= form.number_field :amount , :step => 0.01%>
+  </p>
+ 
+  <p>
+    <%= form.submit %>
+  </p>
+ 
+<% end %>
