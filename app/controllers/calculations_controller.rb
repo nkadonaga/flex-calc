@@ -1,22 +1,37 @@
 class CalculationsController < ApplicationController
-  def new
-    # @calculation = Calculation.new
+  def show
+    @calculation = Calculation.find(params[:id])
   end
 
-  # def create
-  #   @amount = Calculation.new(calculation_params)
-  #   # Order products by ascending price.
-  #   products = Product.order(:price)
-  #   cheapest_product = products[0]
-  #   @list = []
-  #   amount_left = @amount
-  #   while amount_left - cheapest_product.price >= 0
-  #     @list.puts(cheapest_product)
-  #   end
-  # end
+  def new
+    @calculation = Calculation.new
+  end
+
+  def create
+    @calculation = Calculation.new(calculation_params)
+    amount_left = params[:calculation][:amount].to_f
+
+    # Order products by ascending price.
+    products = Product.order(:price)
+    cheapest_product = products[0]
+
+    # Create shopping list.
+    product_array = []
+    while (amount_left - cheapest_product.price) >= 0
+      product_array.push(cheapest_product.name)
+      amount_left -= cheapest_product.price
+    end
+
+    # Add shopping list to record
+    attributes = calculation_params.clone
+    attributes[:list] = product_array.join(", ")
+    @calculation.update_attributes(attributes)
+
+    redirect_to @calculation
+  end
 
   private
     def calculation_params
-      params.require(:calculation).permit(:amount)
+      params.require(:calculation).permit(:amount, :list)
     end
 end
