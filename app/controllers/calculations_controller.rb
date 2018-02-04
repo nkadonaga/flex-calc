@@ -12,7 +12,6 @@ class CalculationsController < ApplicationController
   end
 
   def create
-    @calculation = Calculation.new(calculation_params)
     amount_left = params[:calculation][:amount].to_f
 
     # Order products by ascending price.
@@ -29,9 +28,13 @@ class CalculationsController < ApplicationController
     # Add shopping list to record
     attributes = calculation_params.clone
     attributes[:list] = product_array.join(", ")
-    @calculation.update_attributes(attributes)
+    @calculation = Calculation.new(attributes)
 
-    redirect_to @calculation
+    if @calculation.save
+      redirect_to @calculation
+    else
+      render 'new'
+    end
   end
 
   def destroy

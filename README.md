@@ -55,3 +55,9 @@ For local deployment, follow these instructions:
 
 ## References
 [http://guides.rubyonrails.org/getting_started.html](http://guides.rubyonrails.org/getting_started.html)
+
+http://guides.rubyonrails.org/active_record_validations.html
+
+https://docs.ruby-lang.org/en/2.0.0/
+
+http://api.rubyonrails.org/classes/ActiveModel/Errors.html
