@@ -5,11 +5,13 @@
 <table>
   <tr>
     <th>Allowed products</th>
+    <th>Created at</th>
   </tr>
  
   <% @preferences.each do |preference| %>
     <tr>
       <td><%= preference.allowed_products %></td>
+      <td><%= preference.created_at %></td>
       <td><%= link_to 'Show', preference_path(preference) %></td>
       <td><%= link_to 'Destroy', preference_path(preference),
               method: :delete,

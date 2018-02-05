@@ -16,18 +16,30 @@ class CalculationsController < ApplicationController
 
     # Order products by ascending price.
     products = Product.order(:price)
-    cheapest_product = products[0]
+    cheapest_product = products.first
+
+    # Get most recent preference setting.
+    preferences = Preference.order(created_at: :desc)
+    allowed_products = preferences.first.allowed_products.split(", ")
 
     # Create shopping list.
-    product_array = []
+    shopping_list = []
     while (amount_left - cheapest_product.price) >= 0
-      product_array.push(cheapest_product.name)
-      amount_left -= cheapest_product.price
+      if allowed_products.include?(cheapest_product.id.to_s)
+        shopping_list.push(cheapest_product.name)
+        amount_left -= cheapest_product.price
+      elsif products.length > 1
+        puts cheapest_product.name
+        products = products.drop(1)
+        cheapest_product = products.first
+      else 
+        break
+      end
     end
 
     # Add shopping list to record
     attributes = calculation_params.clone
-    attributes[:list] = product_array.join(", ")
+    attributes[:list] = shopping_list.join(", ")
     @calculation = Calculation.new(attributes)
 
     if @calculation.save

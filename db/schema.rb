@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180205031527) do
+ActiveRecord::Schema.define(version: 20180205033353) do
 
   create_table "calculations", force: :cascade do |t|
     t.decimal "amount"

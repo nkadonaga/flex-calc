@@ -34,6 +34,6 @@ class PreferencesController < ApplicationController
 
   private
     def preference_params
-      params.required(:preference).permit(:allowed_products)
+      params.required(:preference).permit(:allowed_products, :created_at)
     end
 end
