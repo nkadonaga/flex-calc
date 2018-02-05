@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ConfigurationsControllerTest < ActionDispatch::IntegrationTest
+class PreferenceTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

@@ -65,3 +65,5 @@ http://api.rubyonrails.org/classes/ActiveModel/Errors.html
 https://stackoverflow.com/questions/8097750/array-attribute-for-ruby-model
 
 https://help.github.com/articles/licensing-a-repository/
+
+https://apidock.com/rails/v4.0.2/ActionView/Helpers/FormOptionsHelper/collection_check_boxes

@@ -1,0 +1,24 @@
+<h1>New preference setting</h1>
+
+<%= form_with scope: :preference, url: preferences_path, local: true do |form| %>
+
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Like this product?</th>
+    </tr>
+
+    <%= form.collection_check_boxes(:allowed_products, Product.all, :id, :name) do |b| %>
+      <tr>
+        <td><%= b.object.name %></td>
+        <td><%= b.object.price %></td>
+        <td><%= b.check_box %></td>
+      </tr>
+    <% end %>
+  </table>
+ 
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

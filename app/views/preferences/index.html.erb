@@ -1,0 +1,19 @@
+<h1>All preferences</h1>
+
+<%= link_to 'New preference setting', new_preference_path %>
+
+<table>
+  <tr>
+    <th>Allowed products</th>
+  </tr>
+ 
+  <% @preferences.each do |preference| %>
+    <tr>
+      <td><%= preference.allowed_products %></td>
+      <td><%= link_to 'Show', preference_path(preference) %></td>
+      <td><%= link_to 'Destroy', preference_path(preference),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>

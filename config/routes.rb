@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :products
   resources :calculations
-  resources :configurations
+  resources :preferences
  
   root 'welcome#index'
 end
