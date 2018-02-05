@@ -61,3 +61,7 @@ http://guides.rubyonrails.org/active_record_validations.html
 https://docs.ruby-lang.org/en/2.0.0/
 
 http://api.rubyonrails.org/classes/ActiveModel/Errors.html
+
+https://stackoverflow.com/questions/8097750/array-attribute-for-ruby-model
+
+https://help.github.com/articles/licensing-a-repository/
