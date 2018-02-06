@@ -57,13 +57,11 @@ The algorithm currently allows for repeated products in the shopping list.
 
 ## Installation Steps
 
-### TODO test
-
 The app uses Ruby 2.5.0p0 and Rails 5.1.4.
 
 For local deployment, follow these instructions:
 
-1. Install gem dependencies in the `Gemfile` using: `$bundle install`
+1. Create databases using: `$bin/rails db:migrate`
 
 2. Run the server on port 3000 using: `$bin/rails server`
 
