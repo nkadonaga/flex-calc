@@ -61,11 +61,13 @@ The app uses Ruby 2.5.0p0 and Rails 5.1.4.
 
 For local deployment, follow these instructions:
 
-1. Create databases using: `$bin/rails db:migrate`
+1. Install gem dependencies in `Gemfile` using: `$bundle install`
 
-2. Run the server on port 3000 using: `$bin/rails server`
+2. Create databases using: `$bin/rails db:migrate`
 
-3. Navigate to [http://localhost:3000](http://localhost:3000).
+3. Run the server on port 3000 using: `$bin/rails server`
+
+4. Navigate to [http://localhost:3000](http://localhost:3000).
 
 ## Issues
 
