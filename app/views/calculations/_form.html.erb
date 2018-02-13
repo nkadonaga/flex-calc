@@ -1,0 +1,32 @@
+<%= form_with model: @calculation, local: true do |form| %>
+ 
+  <% if @calculation.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@calculation.errors.count, "error") %> prohibited
+        this calculation from being saved:
+      </h2>
+      <ul>
+        <% @calculation.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+  <p>
+    <%= form.label "Amount of flex left:" %><br>
+    <%= form.number_field :amount , :step => 0.01%>
+  </p>
+ 
+  <p>
+    <%= form.label "Enter user ID: " %>
+    <i><%= link_to "(New user?)",   new_user_path %></i>
+    <br>
+    <%= form.number_field :user_id %>
+  </p>
+ 
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

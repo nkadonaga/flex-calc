@@ -32,7 +32,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to @user, notice: 'User was successfully created. Remember your ID number to keep your product preferences.' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -50,7 +50,7 @@ class UsersController < ApplicationController
     attributes[:allowed_products] = product_array.drop(1).join(", ")
     respond_to do |format|
       if @user.update_attributes(attributes)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to @user, notice: 'User was successfully updated. Remember your ID number to keep your product preferences.' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }

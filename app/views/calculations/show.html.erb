@@ -1,3 +1,5 @@
+<p id="notice"><%= notice %></p>
+
 <p>
   <strong>Amount:</strong>
   <%= @calculation.amount %>
@@ -8,5 +10,4 @@
   <%= @calculation.list %>
 </p>
 
-<%= link_to 'New calculation', new_calculation_path %> |
-<%= link_to 'All calculations', controller: 'calculations' %>
+<%= link_to 'Back', calculations_path %>

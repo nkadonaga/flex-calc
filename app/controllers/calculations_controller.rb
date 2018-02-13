@@ -46,6 +46,7 @@ class CalculationsController < ApplicationController
     @calculation = Calculation.new(attributes)
 
     if @calculation.save
+      flash[:notice] = "Calculation was successful."
       redirect_to @calculation
     else
       render 'new'
@@ -56,6 +57,7 @@ class CalculationsController < ApplicationController
     @calculation = Calculation.find(params[:id])
     @calculation.destroy
 
+    flash[:notice] = "Calculation was successfully destroyed."
     redirect_to calculations_path
   end
 
