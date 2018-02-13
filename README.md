@@ -4,6 +4,7 @@ CS121 (Software Development) spring '18
 
 Contributor(s): Natalie Kadonaga HMC '19 (nkadonaga)
 
+Deployed application on Heroku: [https://flexcalc.herokuapp.com/](https://flexcalc.herokuapp.com/)
 
 
 ## Summary
@@ -116,9 +117,7 @@ I eventually removed `Preference` altogether and replaced it by including it as 
 
 ### Known Bugs
 
-The main issue still present is that the deployed application in Heroku broke after making the most recent changes to the backend. 
-
-The other issues include:
+The main issues include:
 
 1. There are no passwords, so any user could change anything in the database, from other users' information, to deleting the entire database. So, this product is far from production.
 2. The user has to enter their ID any time they want to make a calculation.
