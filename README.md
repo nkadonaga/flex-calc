@@ -87,14 +87,22 @@ _Active Record Validations — Ruby on Rails Guides._ (2018). _Guides.rubyonrail
 
 _ActiveModel::Errors._ (2018). _Api.rubyonrails.org._ Retrieved 4 February 2018, from http://api.rubyonrails.org/classes/ActiveModel/Errors.html
 
-_collection\_check\_boxes (ActionView::Helpers::FormOptionsHelper) - APIdock._ (2018). _Apidock.com._ Retrieved 4 February 2018, from https://apidock.com/rails/v4.0.2/ActionView/Helpers/FormOptionsHelper/collection\_check\_boxes
+_Array Attribute for Ruby Model._ (2017). _Stackoverflow.com._ Retrieved 4 February 2018, from https://stackoverflow.com/questions/8097750/array-attribute-for-ruby-model
+
+_Collection\_check\_boxes (ActionView::Helpers::FormOptionsHelper) - APIdock._ (2017). _Apidock.com._ Retrieved 4 February 2018, from https://apidock.com/rails/v4.0.2/ActionView/Helpers/FormOptionsHelper/collection\_check\_boxes
 
 _Documentation for Ruby 2.0.0._ (2018). _Docs.ruby-lang.org._ Retrieved 4 February 2018, from https://docs.ruby-lang.org/en/2.0.0/
 
-_Getting Started with Rails — Ruby on Rails Guides._ (2018). _Guides.rubyonrails.org._ Retrieved 4 February 2018, from http://guides.rubyonrails.org/getting_started.html
+_Getting Started with Rails — Ruby on Rails Guides._ (2014). _Guides.rubyonrails.org._ Retrieved 4 February 2018, from http://guides.rubyonrails.org/getting\_started.html
+
+Hartl, M. (2016). _Ruby on Rails Tutorial (Rails 5). Softcover.io._ Retrieved 11 February 2018, from https://www.railstutorial.org/book/
+
+_How to add screenshot to READMEs in github repository?._ (2012). _Stackoverflow.com._ Retrieved 4 February 2018, from https://stackoverflow.com/questions/10189356/how-to-add-screenshot-to-readmes-in-github-repository
+
+_How to handle ActiveRecord::RecordNotFound in rails controller?._ (2013). _Stackoverflow.com._ Retrieved 12 February 2018, from https://stackoverflow.com/questions/12681524/how-to-handle-activerecordrecordnotfound-in-rails-controller
 
 _Licensing a repository - User Documentation._ (2018). _Help.github.com._ Retrieved 4 February 2018, from https://help.github.com/articles/licensing-a-repository/
 
-_How to add screenshot to READMEs in github repository?._ (2018). _Stackoverflow.com._ Retrieved 4 February 2018, from https://stackoverflow.com/questions/10189356/how-to-add-screenshot-to-readmes-in-github-repository
+_Rails: redirect\_to with :error, but flash[:error] empty._ (2011). _Stackoverflow.com._ Retrieved 12 February 2018, from https://stackoverflow.com/questions/7510418/rails-redirect-to-with-error-but-flasherror-empty
 
-_Array Attribute for Ruby Model._ (2018). _Stackoverflow.com._ Retrieved 4 February 2018, from https://stackoverflow.com/questions/8097750/array-attribute-for-ruby-model
+_Rescue from ActiveRecord::RecordNotFound in Rails._ (2013). _Stackoverflow.com._ Retrieved 12 February 2018, from https://stackoverflow.com/questions/2336593/rescue-from-activerecordrecordnotfound-in-rails

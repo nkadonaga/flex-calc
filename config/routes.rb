@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   get 'welcome/index'
 
   resources :products
+  resources :users
   resources :calculations
-  resources :preferences
  
   root 'welcome#index'
 end

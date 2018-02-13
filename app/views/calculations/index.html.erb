@@ -6,12 +6,14 @@
   <tr>
     <th>Amount</th>
     <th>List</th>
+    <th>User ID</th>
   </tr>
  
   <% @calculations.each do |calculation| %>
     <tr>
       <td><%= calculation.amount %></td>
       <td><%= calculation.list %></td>
+      <td><%= calculation.user_id %></td>
       <td><%= link_to 'Show', calculation_path(calculation) %></td>
       <td><%= link_to 'Destroy', calculation_path(calculation),
               method: :delete,

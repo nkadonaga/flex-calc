@@ -3,6 +3,7 @@ class CreateCalculations < ActiveRecord::Migration[5.1]
     create_table :calculations do |t|
       t.decimal :amount
       t.text :list
+      t.integer :user_id
 
       t.timestamps
     end

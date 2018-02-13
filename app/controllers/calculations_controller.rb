@@ -1,4 +1,7 @@
 class CalculationsController < ApplicationController
+
+  rescue_from ActiveRecord::RecordNotFound, with: :user_id_not_found
+
   def index
     @calculations = Calculation.all
   end
@@ -18,9 +21,9 @@ class CalculationsController < ApplicationController
     products = Product.order(:price)
     cheapest_product = products.first
 
-    # Get most recent preference setting.
-    preferences = Preference.order(created_at: :desc)
-    allowed_products = preferences.first.allowed_products.split(", ")
+    # Get user ID's allowed_products.
+    user = User.find(params[:calculation][:user_id])
+    allowed_products = user.allowed_products.split(", ")
 
     # Create shopping list.
     shopping_list = []
@@ -58,6 +61,11 @@ class CalculationsController < ApplicationController
 
   private
     def calculation_params
-      params.require(:calculation).permit(:amount, :list)
+      params.require(:calculation).permit(:amount, :list, :user_id)
+    end
+
+    def user_id_not_found
+      flash[:alert] = "User ID not found. Please find the correct ID from the list below."
+      redirect_to users_path
     end
 end
