@@ -27,31 +27,47 @@ The MVP must show a list of products (including a name and price) that is change
 
 The app is easy-to-use, configurable, fast, and effective.
 
-From the home page ([http://localhost:3000](http://localhost:3000)), the user can view/change the list of products, make a new calculation, or make a new preference setting for which products they would like to buy.
+From the home page ([http://localhost:3000](http://localhost:3000)), the user can navigate to the form for a new calculation, the list of products, and the list of users.
 
-![](https://puu.sh/zhsSh/0ffee2595d.png "Home page")
+![](https://puu.sh/zmAbL/b6a68580cf.png "Home page")
 
-Clicking "All products" will lead to a list of products ([http://localhost:3000/products](http://localhost:3000/products)), which allows the users to add new products, make edits, or remove products.
+### Adding new products
 
-![](https://puu.sh/zhsUB/39bbdfe7d3.png "All products")
+Clicking "Products" will lead to a list of products ([http://localhost:3000/products](http://localhost:3000/products)), which allows the users to add new products, make edits, or remove products.
+
+![](https://puu.sh/zmAfa/f40a8f7e35.png "All products")
 
 Clicking "New product" will lead the user to a form ([http://localhost:3000/products/new](http://localhost:3000/products/new)) where they can contribute their own information to the list of products.
 
-![](https://puu.sh/zhsYF/c3074f9c45.png "New product")
+![](https://puu.sh/zmAh7/e692f7f05e.png "New product")
 
-![](https://puu.sh/zht2R/7d1cd575af.png "All products, with banana")
+![](https://puu.sh/zmAih/34b1930df2.png "New product successfully created.")
 
-The user can set their preferred products that they want on their shopping list by clicking "New preference" and filling out the form ([http://localhost:3000/preferences/new](http://localhost:3000/preferences/new)).
+![](https://puu.sh/zmAjb/80fa37033f.png "All products, with PBJ sandwich")
 
-![](https://puu.sh/zht9y/b1f2e12c24.png "New preference")
+### Creating a new user
 
-Now, when the user clicks "New calculation" ([http://localhost:3000/calculations/new](http://localhost:3000/calculations/new)) and enters how much flex they have, the resulting shopping list will only include their preferred products.
+The user can set their preferred products that they want on their shopping list by clicking "Users" ([http://localhost:3000/users](http://localhost:3000/users)) then "New user" ([http://localhost:3000/users/new](http://localhost:3000/users/new)) and filling out the form.
 
-![](https://puu.sh/zhtdA/b478f03f18.png "New calculation")
+![](https://puu.sh/zmArB/d00b7ced2c.png "Users page")
 
-![](https://puu.sh/zhte3/b458c5fb45.png "Calculated result")
+![](https://puu.sh/zmAxf/9b65d2dc7f.png "Empty new user form")
 
-The preference setting used is the most recent one entered, so that the user doesn't have to specify their preferences every time.
+![](https://puu.sh/zmAyv/a7e240635d.png "Filled out form")
+
+![](https://puu.sh/zmAzB/c6feb7a437.png "User creation successful")
+
+![](https://puu.sh/zmAAG/4003df1400.png "New users list")
+
+### Creating a new calculation
+
+Now, when the user clicks "New calculation" ([http://localhost:3000/calculations/new](http://localhost:3000/calculations/new)) and enters how much flex they have with their ID number, the resulting shopping list will only include their preferred products.
+
+![](https://puu.sh/zmACL/7f6a1825e1.png "New calculation")
+
+![](https://puu.sh/zmAD8/7c52493a98.png "Calculated result")
+
+The preference setting is saved to the user's ID number, so that the user doesn't have to specify their preferences every time.
 
 The algorithm currently allows for repeated products in the shopping list.
 
@@ -61,13 +77,32 @@ The app uses Ruby 2.5.0p0 and Rails 5.1.4.
 
 For local deployment, follow these instructions:
 
-1. Install gem dependencies in `Gemfile` using: `$bundle install`
+1. Clone the repository.
 
-2. Create databases using: `$bin/rails db:migrate`
+	```
+	git clone https://github.com/nkadonaga/flex-calc
+	```
+2. Enter the repository directory.
 
-3. Run the server on port 3000 using: `$bin/rails server`
+	```
+	cd flex-calc/
+	```
+3. Install gem dependencies in `Gemfile`.
 
-4. Navigate to [http://localhost:3000](http://localhost:3000).
+	```
+	bundle install --without production
+	```
+4. Run the database migration.
+
+	```
+	rails db:migrate
+	```
+5. Run the server on port 3000.
+
+	```
+	rails server
+	```
+6. Navigate to [http://localhost:3000](http://localhost:3000).
 
 ## Issues
 
@@ -75,11 +110,19 @@ For local deployment, follow these instructions:
 
 During app development, there was an issue where I generated an `ActiveModel` called `Configuration`, which caused many errors due to `Configuration` actually being a built-in class. To resolve this, I renamed `Configuration` to `Preference`. This removed the errors.
 
-Another issue was trying to figure out how to fit the list of preferred products into a single attribute in `Preference`, since there would otherwise have to be one attribute for each product in the `Products` database. This would have been inefficient since the user could add a large quantity of products to the database. To resolve this, I saved the array of preferred products in an attribute for text, but specified this text to be serializable.
+Another issue was trying to figure out how to fit the list of preferred products into a single attribute in `Preference`, since there would otherwise have to be one attribute for each product in the `Products` database. This would have been inefficient since the user could add a large quantity of products to the database. To resolve this, I saved the array of preferred products in an attribute for text.
+
+I eventually removed `Preference` altogether and replaced it by including it as an attribute of the new `User` model. This allowed the app to support multiple users.
 
 ### Known Bugs
 
-The main issue still present is the lack of support for multiple users. For example, users are unable to save their *own* preference setting. Instead, the generated shopping list uses whatever preference was last created. So, current plan is to create an `ActiveModel` for users, where a `User` will be related to `Preferences` and their `Calculations` (their generated shoping lists) through a `has_many` relationship. This solution is not perfect since it doesn't use a log-in and a malicious user could remove other users' preference settings.
+The main issue still present is that the deployed application in Heroku broke after making the most recent changes to the backend. 
+
+The other issues include:
+
+1. There are no passwords, so any user could change anything in the database, from other users' information, to deleting the entire database. So, this product is far from production.
+2. The user has to enter their ID any time they want to make a calculation.
+3. There is a lack of user options. What if the user wanted to prevent repeated products in their shopping list? What if the user wanted to calculate a shopping list that would allow one to spend more than their flex left, so that they could pay the extra expense with Claremont Cash? There are many other options that could greatly enhance the program.
 
 ## References
 
